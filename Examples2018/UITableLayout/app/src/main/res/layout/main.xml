@@ -16,6 +16,10 @@
             android:text="@string/open_string"
             android:textSize="16sp" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:gravity="right"
             android:padding="3dp"
@@ -31,6 +35,8 @@
             android:padding="3dp"
             android:text="@string/save_string"
             android:textSize="16sp" />
+
+
 
         <TextView
             android:gravity="right"
@@ -64,7 +70,7 @@
     <TableRow>
 
         <TextView
-            android:padding="3dp"
+            android:padding="6dp"
             android:text="@string/x_string"
             android:textSize="16sp" />
 

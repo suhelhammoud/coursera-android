@@ -2,6 +2,7 @@ package course.examples.ui.spinner;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SpinnerActivity extends Activity {
@@ -24,6 +26,7 @@ public class SpinnerActivity extends Activity {
         // Indicates whether spinner was touched by user
         wasTouched = false;
 
+        final TextView tv = (TextView) findViewById(R.id.textview);
         // Get a reference to the Spinner
         Spinner spinner = findViewById(R.id.spinner);
 
@@ -36,29 +39,32 @@ public class SpinnerActivity extends Activity {
 
         // Set an onTouchListener on the spinner because
         // onItemSelected() can be called multiple times by framework
-        spinner.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                wasTouched = true;
-                v.performClick();
-                return false;
-            }
-        });
+//        spinner.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                Log.i("Suhel", "Touched on Item");
+//                wasTouched = true;
+//                v.performClick();
+//                return false;
+//            }
+//        });
 
         // Set an onItemSelectedListener on the spinner
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
 
-                if (wasTouched) {
+//                if (wasTouched) {
 
                     // Display a Toast message indicating the currently selected item
+                String data = parent.getItemAtPosition(pos).toString();
+                tv.setText(data.toString());
                     Toast.makeText(
                             parent.getContext(),
                             "The color is "
-                                    + parent.getItemAtPosition(pos).toString(),
+                                    + data,
                             Toast.LENGTH_LONG).show();
-                }
+//                }
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
